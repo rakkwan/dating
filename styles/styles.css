@@ -1,10 +1,12 @@
+/*
+    Name: Jittima Goodrich
+    Date: 4/10/2019
+    File: styles.css
+    css for dating website
+ */
+
 img {
     padding: 2em;
     width: 50%;
     height: 50%;
-}
-
-#nav {
-    color: #aaaaaa;
-    background: azure;
 }
