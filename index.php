@@ -1,9 +1,10 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: jrakk
+ * User: Jittima Goodrich
  * Date: 4/8/2019
  * Time: 2:16 PM
+ * File: index.php
  */
 
     // Turn on error reporting
