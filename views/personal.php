@@ -1,3 +1,10 @@
+<!--
+    Name: Jittima Goodrich
+    Date: 4/14/2019
+    File: personal.php
+    Personal information form
+
+-->
 <!doctype html>
 <html lang="en">
 <head>
