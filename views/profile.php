@@ -19,40 +19,32 @@
     <div class="row border rounded my-4">
 
         <div class="col-sm-12">
-            <h1>Personal Information</h1>
+            <h1>Profile</h1>
             <hr>
         </div>
 
 
-        <div class="col-sm-8">
+        <div class="col-sm-6">
 
-            <form action="personal.php" method="post">
+            <form action="profile.php" method="post">
 
                 <div class="form-row">
                     <div class="col-md-10">
-                        <p><strong>First Name</strong></p>
-                        <input type="text" class="form-control" name="first_name"
+                        <p><strong>Email</strong></p>
+                        <input type="email" class="form-control" name="first_name"
                                value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col-md-10">
-                        <p><strong>Last Name</strong></p>
+                        <p><strong>State</strong></p>
                         <input type="text" class="form-control" name="last_name"
                                value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>">
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="col-md-10">
-                        <p><strong>Age</strong></p>
-                        <input type="text" class="form-control" name="age"
-                               value="<?php if (isset($_POST['age'])) echo $_POST['age']; ?>">
-                    </div>
-                </div>
-
-                <p><strong>Gender</strong></p>
+                <p><strong>Seeking</strong></p>
                 <label><input type="radio" name="yourchoice"
                               value="Male" <?php if (isset($_POST['yourchoice']) && ($_POST['yourchoice'] == "Male"))
                         echo 'checked'; ?> > Male</label>
@@ -60,24 +52,16 @@
                               value="Female" <?php if (isset($_POST['yourchoice']) && ($_POST['yourchoice'] == "Female"))
                         echo 'checked'; ?> > Female</label><br>
 
-
-                <div class="form-row">
-                    <div class="col-md-10">
-                        <p><strong>Phone Number</strong></p>
-                        <input type="tel" class="form-control" name="phone"
-                               value="<?php if (isset($_POST['phone'])) echo $_POST['phone']; ?>">
-                    </div>
-                </div>
             </form>
         </div>
 
-        <div class="col-sm-4 my-4">
-            <div class="jumbotron">
-                <p><strong>Note:</strong> All information entered is protected
+        <div class="col-sm-6 my-4">
+            <p><strong>Biography</strong></p>
+                <p>All information entered is protected
                     by our privacy policy. Profile information
                     can only be viewed by others with your
                     permission.</p>
-            </div>
+
             <div class="form-row">
                 <button type="submit" class="btn btn-primary btn-sm">Next></button>
             </div>
@@ -99,8 +83,4 @@
 
 </body>
 </html>
-
-
-
-
 
