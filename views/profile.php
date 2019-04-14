@@ -13,7 +13,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Document</title>
+    <title>Profile</title>
 </head>
 <body>
 
@@ -39,16 +39,16 @@
                 <div class="form-row">
                     <div class="col-md-10">
                         <p><strong>Email</strong></p>
-                        <input type="email" class="form-control" name="first_name"
-                               value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>">
+                        <input type="email" class="form-control" name="email"
+                               value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col-md-10">
                         <p><strong>State</strong></p>
-                        <input type="text" class="form-control" name="last_name"
-                               value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>">
+                        <input type="text" class="form-control" name="state"
+                               value="<?php if (isset($_POST['state'])) echo $_POST['state']; ?>">
                     </div>
                 </div>
 

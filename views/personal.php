@@ -12,7 +12,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Document</title>
+    <title>Personal</title>
 </head>
 <body>
 
@@ -23,7 +23,7 @@
 </nav>
 
 <div class="container">
-    <div class="row border rounded my-4">
+    <div class="row border rounded my-4" id="contain">
 
         <div class="col-sm-12">
             <h1>Personal Information</h1>
@@ -78,13 +78,15 @@
             </form>
         </div>
 
-        <div class="col-sm-4 my-4">
-            <div class="jumbotron">
+        <div class="col-sm-4">
+            <div class="card border-light bg-light mb-3 text-center" style="max-width: 18rem;">
                 <p><strong>Note:</strong> All information entered is protected
-                    by our privacy policy. Profile information
+                    by our <a href="#" class="text-decoration-none">privacy policy.</a> Profile information
                     can only be viewed by others with your
                     permission.</p>
             </div>
+
+
             <div class="form-row">
                 <button type="submit" class="btn btn-primary btn-sm">Next></button>
             </div>
