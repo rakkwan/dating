@@ -33,46 +33,40 @@
 
         <div class="col-sm-8">
 
-            <form action="personal.php" method="post">
+            <form action="profile.html" method="post">
 
                 <div class="form-row">
                     <div class="col-md-10">
                         <p><strong>First Name</strong></p>
-                        <input type="text" class="form-control" name="first_name"
-                               value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>">
+                        <input type="text" class="form-control" name="first_name">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col-md-10">
                         <p><strong>Last Name</strong></p>
-                        <input type="text" class="form-control" name="last_name"
-                               value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>">
+                        <input type="text" class="form-control" name="last_name">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col-md-10">
                         <p><strong>Age</strong></p>
-                        <input type="text" class="form-control" name="age"
-                               value="<?php if (isset($_POST['age'])) echo $_POST['age']; ?>">
+                        <input type="text" class="form-control" name="age">
                     </div>
                 </div>
 
                 <p><strong>Gender</strong></p>
-                <label><input type="radio" name="yourchoice"
-                              value="Male" <?php if (isset($_POST['yourchoice']) && ($_POST['yourchoice'] == "Male"))
-                        echo 'checked'; ?> > Male</label>
-                <label><input type="radio" name="yourchoice"
-                              value="Female" <?php if (isset($_POST['yourchoice']) && ($_POST['yourchoice'] == "Female"))
-                        echo 'checked'; ?> > Female</label><br>
+                <label><input type="radio" name="gender"
+                              value="Male"> Male</label>
+                <label><input type="radio" name="gender"
+                              value="Female"> Female</label><br>
 
 
                 <div class="form-row">
                     <div class="col-md-10">
                         <p><strong>Phone Number</strong></p>
-                        <input type="tel" class="form-control" name="phone"
-                               value="<?php if (isset($_POST['phone'])) echo $_POST['phone']; ?>">
+                        <input type="tel" class="form-control" name="phone">
                     </div>
                 </div>
             </form>
@@ -108,8 +102,3 @@
 
 </body>
 </html>
-
-
-
-
-
