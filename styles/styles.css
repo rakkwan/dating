@@ -18,3 +18,10 @@
     margin-bottom: 20px;
 }
 
+label {
+    padding-top: 20px;
+}
+
+#profile {
+    width: 75%;
+}
