@@ -1,10 +1,8 @@
 <!--
     Name: Jittima Goodrich
     Date: 4/14/2019
-    File: profile.php
+    File: profile.html
     Profile information form
-
-
 -->
 <!doctype html>
 <html lang="en">
@@ -13,7 +11,9 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="styles/styles.css" rel="stylesheet">
     <title>Profile</title>
+
 </head>
 <body>
 
@@ -23,60 +23,74 @@
       </span>
 </nav>
 
-<div class="container">
-    <div class="row border rounded my-4">
 
-        <div class="col-sm-12">
+<form action="interest" method="post">
+    <div class="container border rounded my-4">
+        <div class="row pl-4 mt-4">
+
+        <div class="col-sm-12 pr-4">
             <h1>Profile</h1>
             <hr>
         </div>
 
-
         <div class="col-sm-6">
-
-            <form action="interest.html" method="post">
-
-                <div class="form-row">
-                    <div class="col-md-10">
-                        <p><strong>Email</strong></p>
-                        <input type="email" class="form-control" name="email"
-                               value="email">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col-md-10">
-                        <p><strong>State</strong></p>
-                        <input type="text" class="form-control" name="state"
-                               value="email">
-                    </div>
-                </div>
-
-                <p><strong>Seeking</strong></p>
-                <label><input type="radio" name="seeking" value="Male"> Male</label>
-                <label><input type="radio" name="seeking" value="Female"> Female</label><br>
-
-            </form>
-        </div>
-
-        <div class="col-sm-6 my-4">
-            <p><strong>Biography</strong></p>
-            <p>All information entered is protected
-                by our privacy policy. Profile information
-                can only be viewed by others with your
-                permission.</p>
-
             <div class="form-row">
-                <button type="submit" class="btn btn-primary btn-sm">Next></button>
+                <label><strong>Email</strong></label>
+                <input type="email" class="form-control" name="email">
+
             </div>
 
+            <div class="form-row">
+                <label><strong>State</strong></label>
+                <select class="form-control" name="state">
+                    <option value="WASHINGTON">WASHINGTON</option>
+                    <option value="OREGON">OREGON</option>
+                    <option value="IDAHO">IDAHO</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label><strong>Seeking</strong></label>
+            </div>
+
+            <div class="form-row">
+                <div class="col-sm-2">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="gender"
+                               value="Male"> Male
+                    </label>
+                </div>
+
+                <div class="col-sm-1">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="gender"
+                               value="Female"> Female
+                    </label>
+                </div>
+            </div>
+
+
         </div>
 
+        <div class="col-sm-6 pr-4">
+            <label><strong>Biography</strong></label>
+            <textarea class="form-control" name="bio" rows="5"></textarea>
+
+        </div>
+        </div>
+
+    <div class="row mb-2 pr-2">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary btn-sm float-right">Next></button>
+        </div>
+    </div>
 
 
     </div>
 
-</div>
+
+
+</form>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

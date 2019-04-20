@@ -1,13 +1,85 @@
-<!DOCTYPE html>
+<!--
+    Name: Jittima Goodrich
+    Date: 4/14/2019
+    File: summary.html
+    Summary information form
+-->
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="styles/styles.css" rel="stylesheet">
     <title>Summary</title>
+
 </head>
 <body>
-<h1>Summary</h1>
-<h2>Thank you for your order</h2>
-<h3>You ordered {{ @SESSION.food }} for {{ @SESSION.meal }}</h3>
+
+<nav class="navbar navbar-light bg-light">
+      <span class="navbar-text">
+        The Dog Dating Website
+      </span>
+</nav>
+
+
+    <div class="container border rounded my-4">
+        <div class="row pl-4 mt-4">
+
+            <div class="col-sm-6">
+
+                    <ul class="list-group pl-2">
+                        <li class="list-group-item">Name: {{ @SESSION.first_name }} {{ @SESSION.last_name}}</li>
+                        <li class="list-group-item">Gender: {{ @SESSION.gender }}</li>
+                        <li class="list-group-item">Age: {{ @SESSION.age }}</li>
+                        <li class="list-group-item">Phone: {{ @SESSION.phone }}</li>
+                        <li class="list-group-item">Email: {{ @SESSION.email }}</li>
+                        <li class="list-group-item">State: {{ @SESSION.state }}</li>
+                        <li class="list-group-item">Interests:
+                            {{ implode(" ",@SESSION.indoor) }} {{ implode(" ", @SESSION.outdoor) }}</li>
+
+                    </ul>
+
+
+
+
+            </div>
+
+            <div class="col-sm-6 pr-4">
+                <div class="text-center">
+                    <img id="profile" src="images/profile-pic.PNG" class="img-fluid rounded mx-auto d-block"
+                         alt="profile pic">
+                </div>
+
+                <div>
+                    <h5 class="pl-4 pt-2">Biography</h5>
+                    <p class="text-break pr-4">{{ @SESSION.bio }}</p>
+                    </div>
+
+            </div>
+        </div>
+
+
+        <div class="row mb-2 pr-2">
+            <div class="col-sm-12 text-center">
+                <button type="submit" class="btn btn-primary">Contact Me!</button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
 
 </body>
 </html>
+

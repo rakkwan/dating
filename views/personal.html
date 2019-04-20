@@ -1,7 +1,7 @@
 <!--
     Name: Jittima Goodrich
     Date: 4/14/2019
-    File: personal.php
+    File: personal.html
     Personal information form
 
 -->
@@ -13,6 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <title>Personal</title>
+    <link href="styles/styles.css" rel="stylesheet">
 </head>
 <body>
 
@@ -22,76 +23,79 @@
       </span>
 </nav>
 
-<div class="container">
-    <div class="row border rounded my-4" id="contain">
+<form action="profile" method="post">
 
-        <div class="col-sm-12">
-            <h1>Personal Information</h1>
-            <hr>
-        </div>
-
+<div class="container border rounded my-4">
+    <div class="row pl-4 mt-4">
+            <div class="col-sm-12 pr-4">
+                <h1>Personal Information</h1>
+                <hr>
+            </div>
 
         <div class="col-sm-8">
 
-            <form action="profile.html" method="post">
-
                 <div class="form-row">
-                    <div class="col-md-10">
                         <p><strong>First Name</strong></p>
                         <input type="text" class="form-control" name="first_name">
-                    </div>
                 </div>
 
                 <div class="form-row">
-                    <div class="col-md-10">
                         <p><strong>Last Name</strong></p>
                         <input type="text" class="form-control" name="last_name">
-                    </div>
                 </div>
 
                 <div class="form-row">
-                    <div class="col-md-10">
                         <p><strong>Age</strong></p>
                         <input type="text" class="form-control" name="age">
-                    </div>
                 </div>
-
-                <p><strong>Gender</strong></p>
-                <label><input type="radio" name="gender"
-                              value="Male"> Male</label>
-                <label><input type="radio" name="gender"
-                              value="Female"> Female</label><br>
-
-
-                <div class="form-row">
-                    <div class="col-md-10">
-                        <p><strong>Phone Number</strong></p>
-                        <input type="tel" class="form-control" name="phone">
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="col-sm-4">
-            <div class="card border-light bg-light mb-3 text-center" style="max-width: 18rem;">
-                <p><strong>Note:</strong> All information entered is protected
-                    by our <a href="#" class="text-decoration-none">privacy policy.</a> Profile information
-                    can only be viewed by others with your
-                    permission.</p>
-            </div>
-
 
             <div class="form-row">
-                <button type="submit" class="btn btn-primary btn-sm">Next></button>
+                <p><strong>Gender</strong></p>
+            </div>
+
+            <div class="form-row">
+                <div class="col-sm-1 pl-4">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="gender"
+                                  value="Male"> Male
+                    </label>
+                </div>
+
+                <div class="col-sm-1 pl-4">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="gender"
+                                  value="Female"> Female
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                    <p><strong>Phone Number</strong></p>
+                    <input type="tel" class="form-control" name="phone">
+            </div>
+
+
+        </div>
+
+        <div class="col-md-4 pr-4 pt-4">
+                <div class="border rounded alert alert-secondary">
+                    <p><strong>Note:</strong> All information entered is protected by our
+                        <a href="#" class="text-decoration-none">privacy policy.</a> Profile information
+                        can only be viewed by others with your
+                        permission.</p>
+                </div>
+        </div>
+    </div>
+        <div id="next" class="row mb-2 pr-2">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary btn-sm float-right">Next></button>
             </div>
 
         </div>
 
-
-
-    </div>
-
 </div>
+
+</form>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
