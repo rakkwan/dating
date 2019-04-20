@@ -31,7 +31,7 @@
         echo $view->render('views/home.html');
     });
 
-    $f3->route('GET /personal', function()
+    $f3->route('POST /personal', function()
     {
         // display a personal views
         $view = new Template();
@@ -40,8 +40,12 @@
 
     $f3->route('POST /profile', function()
     {
-        //print_r($_POST);
-        $_SESSION['food'] = $_POST['food'];
+        $_SESSION['first_name'] = $_POST['first_name'];
+        $_SESSION['last_name'] = $_POST['last_name'];
+        $_SESSION['age'] = $_POST['age'];
+        $_SESSION['gender'] = $_POST['gender'];
+        $_SESSION['phone'] = $_POST['phone'];
+
         // display a profile views
         $view = new Template();
         echo $view->render('views/profile.html');
@@ -49,8 +53,11 @@
 
     $f3->route('POST /interest', function()
     {
-        //print_r($_POST);
-        $_SESSION['food'] = $_POST['food'];
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['state'] = $_POST['state'];
+        $_SESSION['seeking'] = $_POST['seeking'];
+        $_SESSION['bio'] = $_POST['bio'];
+
         // display a interest views
         $view = new Template();
         echo $view->render('views/interest.html');
@@ -58,8 +65,9 @@
 
     $f3->route('POST /summary', function()
     {
-        //print_r($_POST);
-        $_SESSION['meal'] = $_POST['meal'];
+        $_SESSION['indoor'] = $_POST['indoor'];
+        $_SESSION['outdoor'] = $_POST['outdoor'];
+
         // display a order received views
         $view = new Template();
         echo $view->render('views/summary.html');
