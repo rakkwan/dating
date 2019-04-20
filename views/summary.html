@@ -18,9 +18,11 @@
 <body>
 
 <nav class="navbar navbar-light bg-light">
-    <li class="nav-item">
-        <a id="text" class="nav-link" href="../dating">The Dog Dating Website</a>
-    </li>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a id="text" class="nav-link" href="../dating">The Dog Dating Website</a>
+        </li>
+    </ul>
 </nav>
 
 
@@ -41,9 +43,6 @@
 
                     </ul>
 
-
-
-
             </div>
 
             <div class="col-sm-6 pr-4">
@@ -53,8 +52,8 @@
                 </div>
 
                 <div>
-                    <h5 class="pl-4 pt-2">Biography</h5>
-                    <p class="text-break pr-4">{{ @SESSION.bio }}</p>
+                    <h5 class="pl-4 pt-2 pl-2">Biography</h5>
+                    <p class="text-break pr-4 pl-4">{{ @SESSION.bio }}</p>
                     </div>
 
             </div>
@@ -66,6 +65,7 @@
                 <button type="submit" class="btn btn-primary">Contact Me!</button>
             </div>
         </div>
+    </div>
 
 
 

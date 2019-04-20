@@ -12,15 +12,19 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Personal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="styles/styles.css" rel="stylesheet">
+    <title>Personal</title>
+
 </head>
 <body>
 
 <nav class="navbar navbar-light bg-light">
+    <ul class="navbar-nav mr-auto">
     <li class="nav-item">
         <a id="text" class="nav-link" href="../dating">The Dog Dating Website</a>
     </li>
+    </ul>
 </nav>
 
 <form action="profile" method="post">
@@ -36,20 +40,25 @@
 
                 <div class="form-row">
                         <p><strong>First Name</strong></p>
-                        <input type="text" class="form-control" name="first_name">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-group-addon" name="first_name">
+                        <div class="input-group-addon">
+                            <img src="images/icons8-contact-40.png" alt="profile">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-row">
+                <div class="form-row pt-2">
                         <p><strong>Last Name</strong></p>
                         <input type="text" class="form-control" name="last_name">
                 </div>
 
-                <div class="form-row">
+                <div class="form-row pt-2">
                         <p><strong>Age</strong></p>
                         <input type="text" class="form-control" name="age">
                 </div>
 
-            <div class="form-row">
+            <div class="form-row pt-3">
                 <p><strong>Gender</strong></p>
             </div>
 
@@ -69,11 +78,10 @@
                 </div>
             </div>
 
-            <div class="form-row">
+            <div class="form-row pt-2">
                     <p><strong>Phone Number</strong></p>
                     <input type="tel" class="form-control" name="phone">
             </div>
-
 
         </div>
 
@@ -86,7 +94,7 @@
                 </div>
         </div>
     </div>
-        <div id="next" class="row mb-2 pr-2">
+        <div id="next" class="row mb-2 pr-2 pt-2">
             <div class="col-sm-12">
                 <button type="submit" class="btn btn-primary btn-sm float-right">Next></button>
             </div>
