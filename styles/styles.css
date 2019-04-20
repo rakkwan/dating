@@ -25,3 +25,12 @@ label {
 #profile {
     width: 75%;
 }
+
+#text {
+    text-decoration: none;
+    color: #aaaaaa;
+}
+
+li {
+    list-style: none;
+}
