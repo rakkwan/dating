@@ -135,22 +135,55 @@
         echo $view->render('views/profile.html');
     });
 
-    $f3->route('POST /interest', function()
+    $f3->route('GET|POST /interest', function($f3)
     {
-        $_SESSION['email'] = $_POST['email'];
-        $_SESSION['state'] = $_POST['state'];
-        $_SESSION['seeking'] = $_POST['seeking'];
-        $_SESSION['bio'] = $_POST['bio'];
+        //if form has been submitted
+        if (!empty($_POST))
+        {
+            // get data from form
+            $indoor = $_POST['indoor'];
+            $outdoor = $_POST['outdoor'];
+
+            // add data to hive
+            $f3->set('indoor', $indoor);
+            $f3->set('outdoor', $outdoor);
+
+            // if data is valid
+            if (validFormInterests())
+            {
+                // write data to Session
+                if (empty($indoor))
+                {
+                    $_SESSION['indoor'] = "No indoor interests";
+                }
+                else
+                {
+                    $_SESSION['indoor'] = implode(', ', $indoor);
+                }
+
+                if (empty($outdoor))
+                {
+                    $_SESSION['outdoor'] = "No outdoor interests";
+                }
+                else
+                {
+                    $_SESSION['outdoor'] = implode(', ', $outdoor);
+                }
+
+                // redirect to summary
+                $f3->reroute('/summary');
+            }
+        }
 
         // display a interest views
         $view = new Template();
         echo $view->render('views/interest.html');
     });
 
-    $f3->route('POST /summary', function()
+    $f3->route('GET|POST /summary', function()
     {
-        $_SESSION['indoor'] = $_POST['indoor'];
-        $_SESSION['outdoor'] = $_POST['outdoor'];
+        //$_SESSION['indoor'] = $_POST['indoor'];
+        //$_SESSION['outdoor'] = $_POST['outdoor'];
 
         // display a order received views
         $view = new Template();

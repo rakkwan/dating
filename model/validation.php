@@ -53,6 +53,26 @@ function validFormProfile()
     return $isValid;
 }
 
+// valid the interests form
+function validFormInterests()
+{
+    global $f3;
+    $isValid = true;
+
+    if (!validIndoor($f3->get('indoor')))
+    {
+        $isValid = false;
+        $f3->set("errors['indoor']", "Invalid selection!");
+    }
+
+    if (!validOutdoor($f3->get('outdoor')))
+    {
+        $isValid = false;
+        $f3->set("errors['outdoor']", "Invalid selection");
+    }
+    return $isValid;
+}
+
 // check to see if name is all alphabetic
 function validName($name)
 {
