@@ -7,6 +7,52 @@
  * File: validation.php
  */
 
+// valid the personal form
+function validFormPersonal()
+{
+    global $f3;
+    $isValid = true;
+
+    if (!validName($f3->get('first_name')))
+    {
+        $isValid = false;
+        $f3->set("errors['first_name']", "Please enter a first name");
+    }
+
+    if (!validName($f3->get('last_name')))
+    {
+        $isValid = false;
+        $f3->set("errors['last_name']", "Please enter a last name");
+    }
+
+    if (!validAge($f3->get('age')))
+    {
+        $isValid = false;
+        $f3->set("errors['age']", "Please enter 18 to 118");
+    }
+
+    if (!validPhone($f3->get('phone')))
+    {
+        $isValid = false;
+        $f3->set("errors['phone']", "Please enter a phone number");
+    }
+    return $isValid;
+}
+
+// valid the profile form
+function validFormProfile()
+{
+    global $f3;
+    $isValid = true;
+
+    if (!validEmail($f3->get('email')))
+    {
+        $isValid = false;
+        $f3->set("errors['email']", "Please enter an email");
+    }
+    return $isValid;
+}
+
 // check to see if name is all alphabetic
 function validName($name)
 {
