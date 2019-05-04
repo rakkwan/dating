@@ -17,12 +17,19 @@
 
     //require autoload file
     require_once ('vendor/autoload.php');
+    require_once ('model/validation.php');
 
     // create an instance of the base class
     $f3 = Base::instance();
 
     // Turn on Fat-free error reporting
     $f3->set('DEBUG', 3);
+
+    // arrays of interests
+    $f3->set('indoorInterests', array('tv', 'movies', 'cooking', 'board games',
+        'puzzles', 'reading', 'playing cards', 'video games'));
+    $f3->set('outdoorInterests', array('hiking', 'biking', 'swimming', 'collecting',
+        'walking', 'climbing'));
 
     // define a default route
     $f3->route('GET /', function()
