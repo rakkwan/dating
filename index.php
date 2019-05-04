@@ -73,6 +73,9 @@
                 {
                     $_SESSION['gender'] = $gender;
                 }
+
+                // redirect to profile
+                $f3->reroute('/profile');
             }
         }
         // display a personal views
@@ -80,13 +83,52 @@
         echo $view->render('views/personal.html');
     });
 
-    $f3->route('POST /profile', function()
+    $f3->route('GET|POST /profile', function($f3)
     {
-        $_SESSION['first_name'] = $_POST['first_name'];
-        $_SESSION['last_name'] = $_POST['last_name'];
-        $_SESSION['age'] = $_POST['age'];
-        $_SESSION['gender'] = $_POST['gender'];
-        $_SESSION['phone'] = $_POST['phone'];
+        // if form has been submitted, validate
+        if(!empty($_POST))
+        {
+            // get data from form
+            $email = $_POST['email'];
+            $state = $_POST['state'];
+            $bio = $_POST['bio'];
+            $seeking = $_POST['seeking'];
+
+            // add data to hive
+            $f3->set('email', $email);
+            $f3->set('state', $state);
+            $f3->set('bio', $bio);
+            $f3->set('seeking', $seeking);
+
+            // if data is valid
+            if (validFormProfile())
+            {
+                // write data to Session
+                $_SESSION['email'] = $email;
+                $_SESSION['state'] = $state;
+
+                if (empty($bio))
+                {
+                    $_SESSION['bio'] = "No Biography";
+                }
+                else
+                {
+                    $_SESSION['bio'] = $bio;
+                }
+
+                if (empty($seeking))
+                {
+                    $_SESSION['seeking'] = "Not prefer to answer";
+                }
+                else
+                {
+                    $_SESSION['seeking'] = $seeking;
+                }
+
+                // redirect to interests
+                $f3->reroute('/interest');
+            }
+        }
 
         // display a profile views
         $view = new Template();
