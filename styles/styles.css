@@ -34,3 +34,7 @@ label {
 li {
     list-style: none;
 }
+
+.err {
+    color: darkred;
+}
