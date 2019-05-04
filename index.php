@@ -38,8 +38,43 @@
         echo $view->render('views/home.html');
     });
 
-    $f3->route('POST /personal', function()
+    $f3->route('GET|POST /personal', function($f3)
     {
+        // Get data from form
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $age = $_POST['age'];
+        $gender = $_POST['gender'];
+        $phone = $_POST['phone'];
+
+        // Add data to hive
+        $f3->set('first_name', $first_name);
+        $f3->set('last_name', $last_name);
+        $f3->set('age', $age);
+        $f3->set('gender', $gender);
+        $f3->set('phone', $phone);
+
+        // If form has been submitted, validate
+        if(!empty($_POST))
+        {
+            // if data is valid
+            if (validFormPersonal())
+            {
+                // Write data to session
+                $_SESSION['first_name'] = $first_name;
+                $_SESSION['last_name'] = $last_name;
+                $_SESSION['age'] = $age;
+                $_SESSION['phone'] = $phone;
+                if (empty($gender))
+                {
+                    $_SESSION['gender'] = "No gender selected";
+                }
+                else
+                {
+                    $_SESSION['gender'] = $gender;
+                }
+            }
+        }
         // display a personal views
         $view = new Template();
         echo $view->render('views/personal.html');
