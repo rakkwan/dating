@@ -34,7 +34,7 @@ function validFormPersonal()
     if (!validPhone($f3->get('phone')))
     {
         $isValid = false;
-        $f3->set("errors['phone']", "Please enter a phone number");
+        $f3->set("errors['phone']", "Please enter a phone number, must be 10 digits");
     }
     return $isValid;
 }
@@ -48,7 +48,7 @@ function validFormProfile()
     if (!validEmail($f3->get('email')))
     {
         $isValid = false;
-        $f3->set("errors['email']", "Please enter an email");
+        $f3->set("errors['email']", "Please enter an email address");
     }
     return $isValid;
 }

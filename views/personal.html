@@ -27,7 +27,7 @@
     </ul>
 </nav>
 
-<form action="profile" method="post">
+<form action="#" method="post">
 
 <div class="container border rounded my-4">
     <div class="row pl-4 mt-4">
@@ -43,16 +43,16 @@
                     <div class="input-group">
                         <input type="text" class="form-control input-group-addon" name="first_name"
                                value="{{ @first_name }}">
-                        <check if="{{ @errors['first_name'] }}">
-                            <span class="err">{{ @errors['first_name'] }}</span>
-                        </check>
                     </div>
+                    <check if="{{ isset(@errors['first_name']) }}">
+                        <span class="err">{{ @errors['first_name'] }}</span>
+                    </check>
                 </div>
 
                 <div class="form-row mt-3">
                         <p><strong>Last Name</strong></p>
                         <input type="text" class="form-control" name="last_name" value="{{ @last_name }}">
-                    <check if="{{ @errors['last_name'] }}">
+                    <check if="{{ isset(@errors['last_name']) }}">
                         <span class="err">{{ @errors['last_name'] }}</span>
                     </check>
                 </div>
@@ -60,7 +60,7 @@
                 <div class="form-row mt-3">
                         <p><strong>Age</strong></p>
                         <input type="text" class="form-control" name="age" value="{{ @age }}">
-                    <check if="{{ @errors['age'] }}">
+                    <check if="{{ isset(@errors['age']) }}">
                         <span class="err">{{ @errors['age'] }}</span>
                     </check>
                 </div>
@@ -74,7 +74,7 @@
                     <label class="form-check-label">
                         <input class="form-check-input" type="radio" name="gender"
                                   value="Male">
-                        <check if="{{ @gender === 'Male' }}"></check>
+                        <check if="{{ @gender === 'Male' }}">checked</check>
                         Male
                     </label>
                 </div>
@@ -83,7 +83,7 @@
                     <label class="form-check-label">
                         <input class="form-check-input" type="radio" name="gender"
                                   value="Female">
-                        <check if="{{ @gender === 'Female }}"></check>
+                        <check if="{{ @gender === 'Female' }}">checked</check>
                         Female
                     </label>
                 </div>
@@ -92,8 +92,8 @@
             <div class="form-row mt-3">
                     <p><strong>Phone Number</strong></p>
                     <input type="tel" class="form-control" name="phone" value="{{ @phone }}">
-                <check if="{{ @errors['phone'] }}">
-                    <span>{{ @errors['phone'] }}</span>
+                <check if="{{ isset(@errors['phone']) }}">
+                    <span class="err">{{ @errors['phone'] }}</span>
                 </check>
             </div>
 

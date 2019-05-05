@@ -1,4 +1,5 @@
 <?php
+    session_start();
 /**
  * Created by PhpStorm.
  * User: Jittima Goodrich
@@ -8,8 +9,6 @@
  * index page for dog dating website
  */
 
-    //Start a session
-    session_start();
 
     // Turn on error reporting
     ini_set('display_error', 1);
@@ -40,23 +39,23 @@
 
     $f3->route('GET|POST /personal', function($f3)
     {
-        // Get data from form
-        $first_name = $_POST['first_name'];
-        $last_name = $_POST['last_name'];
-        $age = $_POST['age'];
-        $gender = $_POST['gender'];
-        $phone = $_POST['phone'];
-
-        // Add data to hive
-        $f3->set('first_name', $first_name);
-        $f3->set('last_name', $last_name);
-        $f3->set('age', $age);
-        $f3->set('gender', $gender);
-        $f3->set('phone', $phone);
-
         // If form has been submitted, validate
         if(!empty($_POST))
         {
+            // Get data from form
+            $first_name = $_POST['first_name'];
+            $last_name = $_POST['last_name'];
+            $age = $_POST['age'];
+            $gender = $_POST['gender'];
+            $phone = $_POST['phone'];
+
+            // Add data to hive
+            $f3->set('first_name', $first_name);
+            $f3->set('last_name', $last_name);
+            $f3->set('age', $age);
+            $f3->set('gender', $gender);
+            $f3->set('phone', $phone);
+
             // if data is valid
             if (validFormPersonal())
             {
@@ -154,20 +153,20 @@
                 // write data to Session
                 if (empty($indoor))
                 {
-                    $_SESSION['indoor'] = "No indoor interests";
+                    $_SESSION['indoor'] = ["No indoor interests"];
                 }
                 else
                 {
-                    $_SESSION['indoor'] = implode(', ', $indoor);
+                    $_SESSION['indoor'] = $indoor;
                 }
 
                 if (empty($outdoor))
                 {
-                    $_SESSION['outdoor'] = "No outdoor interests";
+                    $_SESSION['outdoor'] = ["No outdoor interests"];
                 }
                 else
                 {
-                    $_SESSION['outdoor'] = implode(', ', $outdoor);
+                    $_SESSION['outdoor'] = $outdoor;
                 }
 
                 // redirect to summary
