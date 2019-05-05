@@ -165,6 +165,15 @@
                 </div>
             </div>
 
+        <div>
+            <check if="{{ isset(@errors) }}">
+                <repeat group="{{ @errors }}" name="{{ @key }}" value="{{ @value }}">
+                    <p>{{ @error }}</p>
+
+                </repeat>
+            </check>
+        </div>
+
 
 
         <div class="row mb-2 pr-2">

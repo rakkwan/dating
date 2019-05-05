@@ -153,20 +153,20 @@
                 // write data to Session
                 if (empty($indoor))
                 {
-                    $_SESSION['indoor'] = ["No indoor interests"];
+                    $_SESSION['indoor'] = "No indoor interests";
                 }
                 else
                 {
-                    $_SESSION['indoor'] = $indoor;
+                    $_SESSION['indoor'] = implode(', ',$indoor);
                 }
 
                 if (empty($outdoor))
                 {
-                    $_SESSION['outdoor'] = ["No outdoor interests"];
+                    $_SESSION['outdoor'] = "No outdoor interests";
                 }
                 else
                 {
-                    $_SESSION['outdoor'] = $outdoor;
+                    $_SESSION['outdoor'] = implode(', ', $outdoor);
                 }
 
                 // redirect to summary
