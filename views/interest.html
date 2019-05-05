@@ -168,7 +168,7 @@
         <div>
             <check if="{{ isset(@errors) }}">
                 <repeat group="{{ @errors }}" name="{{ @key }}" value="{{ @value }}">
-                    <p>{{ @error }}</p>
+                    <p>{{ @value }}</p>
 
                 </repeat>
             </check>
