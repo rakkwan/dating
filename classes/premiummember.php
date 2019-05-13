@@ -7,16 +7,21 @@
  * The PremiumMember class the member have the opportunity to provide more information
  */
 
+/**
+ * Class PremiumMember represents a premium membership
+ *
+ * Only premium members get to choose the interests
+ * @author Jittima Goodrich
+ * @copyright 2019
+ */
 class PremiumMember extends Member
 {
     private $_inDoorInterests;
     private $_outDoorInterests;
 
-    function __construct($fname, $lname, $age, $gender, $phone, $inDoorInterests, $outDoorInterests)
+    function __construct($fname, $lname, $age, $gender, $phone)
     {
         parent::__construct($fname, $lname, $age, $gender, $phone);
-        $this->_inDoorInterests = $inDoorInterests;
-        $this->_outDoorInterests = $outDoorInterests;
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+    require_once ('vendor/autoload.php');
     session_start();
 /**
  * Created by PhpStorm.
@@ -15,23 +16,12 @@
     error_reporting(E_ALL);
 
     //require autoload file
-    require_once ('vendor/autoload.php');
     require_once ('model/validation.php');
 
     // create an instance of the base class
     $f3 = Base::instance();
 
     //Turn on Fat-Free error reporting
-    set_exception_handler(function($obj) use($f3){
-        $f3->error(500, $obj->getmessage(),$obj->gettrace());
-    });
-    set_error_handler(function($code,$text) use($f3)
-    {
-        if (error_reporting())
-        {
-            $f3->error(500,$text);
-        }
-    });
     $f3->set('DEBUG', 3);
 
     // arrays of interests
@@ -58,6 +48,7 @@
             $age = $_POST['age'];
             $gender = $_POST['gender'];
             $phone = $_POST['phone'];
+            $member = $_POST['member'];
 
             // Add data to hive
             $f3->set('first_name', $first_name);
@@ -65,6 +56,7 @@
             $f3->set('age', $age);
             $f3->set('gender', $gender);
             $f3->set('phone', $phone);
+            $f3->set('member', $member);
 
             // if data is valid
             if (validFormPersonal())
@@ -82,6 +74,16 @@
                 {
                     $_SESSION['gender'] = $gender;
                 }
+
+                if($member == "premium")
+                {
+                    $memb = new PremiumMember($first_name, $last_name, $age, $gender, $phone);
+                }
+                else
+                {
+                    $memb = new Member($first_name, $last_name, $age, $gender, $phone);
+                }
+                $_SESSION['member'] = $memb;
 
                 // redirect to profile
                 $f3->reroute('/profile');
@@ -134,8 +136,18 @@
                     $_SESSION['seeking'] = $seeking;
                 }
 
-                // redirect to interests
-                $f3->reroute('/interest');
+                $memb = $_SESSION['member'];
+                $memb->setEmail($email);
+                $memb->setState($state);
+                $memb->setBio($bio);
+                $memb->setSeeking($seeking);
+
+                if ($memb instanceof PremiumMember)
+                {
+                    // redirect to interests
+                    $f3->reroute('/interest');
+                }
+                $f3->reroute('/summary');
             }
         }
 
@@ -179,6 +191,8 @@
                     $_SESSION['outdoor'] = implode(', ', $outdoor);
                 }
 
+                $_SESSION['member']->setInDoorInterests($indoor);
+                $_SESSION['member']->setOutDoorInterests($outdoor);
                 // redirect to summary
                 $f3->reroute('/summary');
             }
@@ -191,9 +205,6 @@
 
     $f3->route('GET|POST /summary', function()
     {
-        //$_SESSION['indoor'] = $_POST['indoor'];
-        //$_SESSION['outdoor'] = $_POST['outdoor'];
-
         // display a order received views
         $view = new Template();
         echo $view->render('views/summary.html');

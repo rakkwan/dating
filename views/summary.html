@@ -32,15 +32,20 @@
             <div class="col-sm-6">
 
                     <ul class="list-group pl-2">
-                        <li class="list-group-item">Name: {{ @SESSION.first_name }} {{ @SESSION.last_name}}</li>
-                        <li class="list-group-item">Gender: {{ @SESSION.gender }}</li>
-                        <li class="list-group-item">Age: {{ @SESSION.age }}</li>
-                        <li class="list-group-item">Phone: {{ @SESSION.phone }}</li>
-                        <li class="list-group-item">Email: {{ @SESSION.email }}</li>
-                        <li class="list-group-item">State: {{ @SESSION.state }}</li>
-                        <li class="list-group-item">Interests:
-                            {{ @SESSION.indoor }} {{ @SESSION.outdoor }}</li>
+                        <li class="list-group-item">Name: {{ @SESSION.member->getFname() }}
+                            {{ @SESSION.member->getLname() }}</li>
+                        <li class="list-group-item">Gender: {{ @SESSION.member->getGender() }}</li>
+                        <li class="list-group-item">Age: {{ @SESSION.member->getAge() }}</li>
+                        <li class="list-group-item">Phone: {{ @SESSION.member->getPhone() }}</li>
+                        <li class="list-group-item">Email: {{ @SESSION.member->getEmail() }}</li>
+                        <li class="list-group-item">State: {{ @SESSION.member->getState() }}</li>
+                        <li class="list-group-item">Seeking: {{ @SESSION.member->getSeeking() }}</li>
 
+                        <check if="{{ @SESSION.member instanceof PremiumMember }}">
+                            <li class="list-group-item">Interests:
+                                {{ implode(', ', @SESSION.member->getInDoorInterests()) }}
+                                {{ implode(', ', @SESSION.member->getOutDoorInterests()) }}</li>
+                        </check>
                     </ul>
 
             </div>
@@ -53,7 +58,7 @@
 
                 <div>
                     <h5 class="pl-4 pt-2 pl-2">Biography</h5>
-                    <p class="text-break pr-4 pl-4">{{ @SESSION.bio }}</p>
+                    <p class="text-break pr-4 pl-4">{{ @SESSION.member->getBio() }}</p>
                     </div>
 
             </div>
