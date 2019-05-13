@@ -86,25 +86,13 @@
         </div>
         </div>
 
-        <div>
-            <check if="{{ isset(@errors) }}">
-                <repeat group="{{ @errors }}" name="{{ @key }}" value="{{ @value }}">
-                    <p>{{ @value }}</p>
-
-                </repeat>
-            </check>
-        </div>
-
     <div class="row mb-2 pr-2">
         <div class="col-sm-12">
             <button type="submit" class="btn btn-primary btn-sm float-right">Next></button>
         </div>
     </div>
 
-
     </div>
-
-
 
 </form>
 
