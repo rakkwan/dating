@@ -210,5 +210,16 @@
         echo $view->render('views/summary.html');
     });
 
+    $f3->route('GET /admin', function($f3)
+    {
+        $db = new database();
+        $db->connect();
+        $members = $db->getMembers();
+        $view = new Template();
+        $f3->set('members', $members);
+        $f3->set('database', $db);
+        echo $view->render("views/admin.html");
+    });
+
     // Run Fat-Free
     $f3->run();
