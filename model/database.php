@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Jittima Goodrich
@@ -41,8 +42,8 @@ CREATE TABLE memberinterest
 	PRIMARY KEY(member_id, interest_id)
 );
  */
-require '/home/jgoodric/config-student.php';
 
+require '/home/jgoodric/config-student.php';
 /**
  * Class Database connect to database
  * @author Jittima Goodrich
@@ -72,6 +73,7 @@ class Database
             // Instantiate a db object
             $this->_dbh = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
             //return $this->_dbh;
+            //echo "connected!";
         } catch (PDOException $e) {
             $this->_dbh = $e->getMessage();
         }
@@ -123,20 +125,34 @@ class Database
             //Execute the statement
             $statement->execute();
 
-            // grab id
-            $id = $this->_dbh->lastInsertId();
-
             //check if Premium member to insert
             if($member instanceof PremiumMember) {
+                // grab id
+                $lastID = $this->_dbh->lastInsertId();
                 $indoor = $member->getInDoorInterests();
                 $outdoor = $member->getOutDoorInterests();
-                if(isset($indoor))
+                if(!empty($indoor))
                 {
-                    $this->insertInterest($indoor, $id);
+                    foreach ($indoor as $interest) {
+
+                        $sql = "SET @interest = (SELECT interest_id FROM interest WHERE interest ='$interest');
+                        INSERT INTO memberinterest VALUES($lastID, @interest);";
+                        //$this->insertInterest($interest, $id);
+                        //echo $interest.$id;
+                        $statement = $this->_dbh->prepare($sql);
+                        $statement->execute();
+                    }
                 }
-                if(isset($outdoor))
+                if(!empty($outdoor))
                 {
-                    $this->insertInterest($outdoor, $id);
+                    foreach ($outdoor as $interest) {
+                        $sql = "SET @interest = (SELECT interest_id FROM interest WHERE interest ='$interest');
+                        INSERT INTO memberinterest VALUES($lastID, @interest);";
+                        //$this->insertInterest($interest, $id);
+                        $statement = $this->_dbh->prepare($sql);
+                        $statement->execute();
+                    }
+
                 }
             }
         }
@@ -149,33 +165,20 @@ class Database
      */
     private function insertInterest($interest, $id)
     {
+        $sqlID = "SELECT interest_id FROM interest WHERE interest = :interest";
+        $statementID = $this->_dbh->prepare($sqlID);
+        $statementID->bindParam(':interest', $interest, PDO::PARAM_STR);
+        $statementID->execute();
+        $row = $statementID->fetch(PDO::FETCH_ASSOC);
+        $id1 = $row['interest_id'];
+
         $sql = "INSERT INTO memberinterest(member_id, interest_id)
-                VALUES(:member, :interest)";
+                VALUES(:member_id, :interest_id)";
         $statement = $this->_dbh->prepare($sql);
 
-        foreach ($interest as $value) {
-            // bind interest id and member id
-            $statement->bindParam(":member", $id, PDO::PARAM_INT);
-            $statement->bindParam(":interest", $this->getID($value), PDO::PARAM_INT);
-
-            //Execute the statement
-            $statement->execute();
-        }
-    }
-
-    /**
-     * check interest id
-     * @param $interest_id id of interest
-     * @return mixed Int interest
-     */
-    private function getID($interest_id)
-    {
-        $sql = "SELECT interest_id FROM interest WHERE interest_id = :interest_id";
-        $statement = $this->_dbh->prepare($sql);
-
-        $statement->bindParam(':interest', $interest_id, PDO::PARAM_INT);
+        $statement->bindParam(':member_id', $id, PDO::PARAM_INT);
+        $statement->bindParam(':interest_id', $id1, PDO::PARAM_INT);
         $statement->execute();
-        return $statement->fetch(PDO::FETCH_NUM);
     }
 
     /**
@@ -201,7 +204,7 @@ class Database
         $statement = $this->_dbh->prepare($sql);
         $statement->bindParam(":member_id", $member_id, PDO::PARAM_INT);
         $statement->execute();
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
@@ -211,11 +214,16 @@ class Database
      */
     function getInterests($member_id)
     {
-        $sql = "SELECT i.interest FROM memberinterest AS mi INNER JOIN interest AS i 
+        $sql = "SELECT i.interest FROM memberinterest mi INNER JOIN interest i 
                 ON mi.interest_id = i.interest_id WHERE mi.member_id = :member_id";
         $statement = $this->_dbh->prepare($sql);
         $statement->bindParam(':member_id', $member_id, PDO::PARAM_STR);
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        $row = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach($row as $item) {
+            echo $item['interest']. ", ";
+        }
     }
+
 }

@@ -30,6 +30,8 @@
     $f3->set('outdoorInterests', array('hiking', 'biking', 'swimming', 'collecting',
         'walking', 'climbing'));
 
+    $db = new Database();
+
     // define a default route
     $f3->route('GET /', function()
     {
@@ -205,20 +207,23 @@
 
     $f3->route('GET|POST /summary', function()
     {
+        $db = new Database();
+        $db->insertMember($_SESSION['member']);
+
         // display a order received views
         $view = new Template();
         echo $view->render('views/summary.html');
     });
 
-    $f3->route('GET /admin', function($f3)
+    $f3->route('GET|POST /admin', function($f3)
     {
-        $db = new database();
-        $db->connect();
+        $db = new Database();
         $members = $db->getMembers();
         $view = new Template();
         $f3->set('members', $members);
         $f3->set('database', $db);
         echo $view->render("views/admin.html");
+
     });
 
     // Run Fat-Free

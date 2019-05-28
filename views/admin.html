@@ -1,13 +1,92 @@
+<!--
+    Name: Jittima Goodrich
+    Date: 4/14/2019
+    File: admin.html
+    Admin page
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
     <link href="styles/styles.css" rel="stylesheet">
-    <title>Admin</title>
+    <title>Admin Page</title>
 </head>
 <body>
+<nav class="navbar navbar-light bg-light">
+    <ul class="nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="../dating">The Dog Dating Website</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="admin">Admin</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container border rounded">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>My Dating Site</h1>
+            <h3>Membership</h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>State</th>
+                    <th>Gender</th>
+                    <th>Seeking</th>
+                    <th>Premium</th>
+                    <th>Interests</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <repeat group="{{ @members }}" key="{{ @key }}" value="{{ @value }}">
+                        <tr>
+                            <td>{{ @value['member_id'] }}</td>
+                            <td>{{ @value['fname'] }} {{ @value['lname'] }}</td>
+                            <td>{{ @value['age'] }}</td>
+                            <td>{{ @value['phone'] }}</td>
+                            <td>{{ @value['email'] }}</td>
+                            <td>{{ @value['state'] }}</td>
+                            <td>{{ @value['gender'] }}</td>
+                            <td>{{ @value['seeking'] }}</td>
+                            <td>
+                                <check if="{{ @value['premium'] == 1}}">
+                                    <true>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="customCheck1" checked="checked" >
+                                            <label class="custom-control-label" for="customCheck1"></label>
+                                        </div>
+                                    </true>
+                                    <false>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="customCheck2" disabled>
+                                            <label class="custom-control-label" for="customCheck2"></label>
+                                        </div>
+                                    </false>
+                                </check>
+                            </td>
+                            <td>{{ @database->getInterests(@value['member_id']) }}</td>
+                        </tr>
+                    </repeat>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

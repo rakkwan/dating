@@ -38,3 +38,7 @@ li {
 .err {
     color: darkred;
 }
+
+#check1 {
+    background: blue;
+}
